@@ -1,12 +1,12 @@
 # setpw
 
-The purpose of the `setpw.bat` batch file and supporting Python program `setpw.py`
+The purpose of the `setpw.bat` batch file and supporting `setpw.py` Python program
 is to set the value of an environment variable with a password.  To prevent
 the password being seen the characters in it are NOT displayed as it is typed.
 Instead the '*' character is displayed.  Also the user has to enter the
 password twice to help make sure it is correct.
 
-## Typical usage or setpw
+## Typical usage of setpw
 
 Here is a typical usage to set the environment variable `PWORD` to the value of
 a password entered by the user:
@@ -31,16 +31,16 @@ but this would defeat the whole purpose as the password would now be visible
 on the screen.  However, I do recommend doing this with a dummy/test password
 like `notmypassword` just so you can see the program working.
 
-Note the requirement to `CALL` the setpw batch file - this is because the `setpw.bat`
+Note the requirement to `CALL` the `setpw.bat` batch file - this is because the `setpw.bat`
 batch file much be run in the same environment and not as a subprocess.
 
-The `setpw.bat` batch file calls the Python program `setpw.py` which does the bulk
+The `setpw.bat` batch file calls the `setpw.py` Python program which does the bulk
 of the work.
 
 ## Why is setpw useful?
 
 I often do live demonstrations and record demonstrations on Youtube when I
-have to set an environment variable to contain a password.  Using `setpw` ensures
+have to set an environment variable to contain a password.  Calling `setpw.bat` ensures
 the password is not seen by the viewers.
 
 ## Installation
