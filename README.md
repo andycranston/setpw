@@ -6,6 +6,13 @@ the password being seen the characters in it are NOT displayed as it is typed.
 Instead the '*' character is displayed.  Also the user has to enter the
 password twice to help make sure it is correct.
 
+ADDENDUM: This repository now includes a Bourne style shell script
+called `setpw.py` for UNIX/Linux users which does the same thing.  Skip to
+the section "For UNIX/Linux users" near the bottom of this document
+if that is what you want.
+
+Windows users read on...
+
 ## Typical usage of setpw
 
 Here is a typical usage to set the environment variable `PWORD` to the value of
@@ -78,3 +85,25 @@ a system crash/hang at exactly the wrong moment then this file might not get
 deleted and the password then be vunerable to discovery.
 
 For this reason DO NOT use this program on production or other critical systems.
+
+## For UNIX/Linux users
+
+The Bourne style shell script `setpw.sh` should be copied to
+a directory in your PATH and called `setpw`.  Something similar to:
+
+```
+cp setpw.sh $HOME/bin
+cd $HOME/bin
+mv setpw.sh setpw
+chmod a+x setpw
+```
+
+It can now be run from the UNIX command line as follows:
+
+```
+. setpw PWORD
+```
+
+Note the "." at thre beginning to "source" the shell script.  This is because,
+like the Windows version, setpw must be run in the current environment and not as a subprocess.
+
