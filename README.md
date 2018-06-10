@@ -7,11 +7,11 @@ Instead the '*' character is displayed.  Also the user has to enter the
 password twice to help make sure it is correct.
 
 ADDENDUM: This repository now includes a Bourne style shell script
-called `setpw.py` for UNIX/Linux users which does the same thing.  Skip to
+called `setpw.sh` for UNIX/Linux users which does the same thing.  Skip to
 the section "For UNIX/Linux users" near the bottom of this document
 if that is what you want.
 
-Windows users read on...
+Windows users read on ...
 
 ## Typical usage of setpw
 
@@ -105,5 +105,5 @@ It can now be run from the UNIX command line as follows:
 ```
 
 Note the "." at thre beginning to "source" the shell script.  This is because,
-like the Windows version, setpw must be run in the current environment and not as a subprocess.
-
+like the Windows version, setpw must be run in the current environment and
+not as a subprocess.
