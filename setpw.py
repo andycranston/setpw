@@ -34,6 +34,9 @@ def readhidden():
 
     while True:
         key = msvcrt.getch()
+        
+        if key == b'\x00':
+            continue
 
         if (key == b'\r'):
             break
