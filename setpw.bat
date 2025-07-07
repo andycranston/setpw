@@ -1,6 +1,6 @@
 @ECHO OFF
 REM
-REM @(!--#) @(#) setpw.py, version 001, 30-march-2018
+REM @(!--#) @(#) setpw.py, version 002, 05-july-2025
 REM
 REM Usage:
 REM         call setpw VARNAME
@@ -9,7 +9,7 @@ REM where VARNAME is the name of an environmental variable
 REM
 
 REM Set location of Python program
-SET PYTHONPROG=C:\Windows\setpw.py
+SET PYTHONPROG=%LOCALAPPDATA%\Microsoft\WindowsApps\setpw.py
 
 REM Set name of temporary password file
 SET TEMPPASSFILE=%TEMP%\deleteme.pw
