@@ -52,22 +52,30 @@ the password is not seen by the viewers.
 
 ## Installation
 
-Copy the `setpw.bat` and `setpw.py` files to:
-
+Run the INSTALL-WIN.bat Windows batch file as follows:
+    
 ```
-C:\Windows
-
-```
-
-If you do not have administrator rights to be able to do this then copy both
-files to a directory you do have access to that is in your PATH.  If you have
-to do this then edit the line in `setpw.bat` which reads:
-
-```
-SET PYTHONPROG=C:\Windows\setpw.py
+INSTALL-WIN.bat
 ```
 
-to match where the `setpw.py` Python program was copied to.
+It will display something similar to:
+
+```
+To copy the setpw.bat and setpw.py files to C:\Users\andy.PROBOOK-6465B\AppData\
+Local\Microsoft\WindowsApps
+Press any key to continue . . .
+```
+
+Press return to allow the batch file to continue. The batch file
+will now displays two additional lines:
+    
+```
+        1 file(s) copied.
+        1 file(s) copied.
+```
+
+That's it.
+
 
 ## Warnings
 
@@ -84,7 +92,41 @@ There is a small possibility that if an unexpected error occurs or if there is
 a system crash/hang at exactly the wrong moment then this file might not get
 deleted and the password then be vunerable to discovery.
 
-For this reason DO NOT use this program on production or other critical systems.
+Also the password has been written to disk so, even after the file is deleted, a determined
+"bad actor" could scan this disk blocks and potentially retrieve the password. See below for a
+mitigation against this.
+
+For these reasons I highly recommend that you DO NOT use this program on production or other critical systems.
+What you determine to be "critical" is your own choice and yours alone!
+
+## Password written to disk mitigation
+
+There is a utility called sdelete for windows which securely deletes a file. The basic idea
+is that before deleting the file it opens the file and overwrites the current content with
+zero bytes before deleting the file.
+
+You can download sdelete here:
+    
+[The sdelete (secure delete) program from sysinternals](https://learn.microsoft.com/en-us/sysinternals/downloads/sdelete)
+
+Extract the ZIP file and copy the file:
+    
+```
+sdelete.exe
+```
+
+from the acrhive to the followign directory on your Windows machine:
+    
+```
+%LOCALAPPDATA%\Microsoft\WindowsApps
+```
+
+Now when the `setpw.bat` batch file runs it will detect that the sdelete command is available
+and use sdelete to delete the sensitive temporary password file instead of the far less
+secure DEL command.
+
+While this is an improvement I would still recommend NEVER using setpw for production
+and critical systems.
 
 ## For UNIX/Linux users
 
