@@ -1,6 +1,6 @@
 @ECHO OFF
 REM
-REM @(!--#) @(#) setpw.py, version 002, 05-july-2025
+REM @(!--#) @(#) setpw.py, version 003, 07-july-2025
 REM
 REM Usage:
 REM         call setpw VARNAME
@@ -10,6 +10,7 @@ REM
 
 REM Set location of Python program
 SET PYTHONPROG=%LOCALAPPDATA%\Microsoft\WindowsApps\setpw.py
+SET SDELETEPROG=%LOCALAPPDATA%\Microsoft\WindowsApps\sdelete.exe
 
 REM Set name of temporary password file
 SET TEMPPASSFILE=%TEMP%\deleteme.pw
@@ -24,7 +25,13 @@ python %PYTHONPROG% %TEMPPASSFILE%
 IF ERRORLEVEL 1 GOTO END
 IF NOT EXIST %TEMPPASSFILE% GOTO END
 SET /P %VARNAME%= < %TEMPPASSFILE%
+IF NOT EXIST %TEMPPASSFILE% GOTO FINISHUP
+
+IF EXIST %SDELETEPROG% SDELETE -p 3 -nobanner %TEMPPASSFILE% >NUL
 IF EXIST %TEMPPASSFILE% DEL %TEMPPASSFILE%
+
+
+:FINISHUP
 ECHO Environment variable %VARNAME% set to password entered above
 GOTO END
 
