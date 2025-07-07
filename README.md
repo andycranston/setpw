@@ -107,3 +107,12 @@ It can now be run from the UNIX command line as follows:
 Note the "." at thre beginning to "source" the shell script.  This is because,
 like the Windows version, setpw must be run in the current environment and
 not as a subprocess.
+
+## Links
+
+Useful links used in the development of this repo:
+
+[The sdelete (secure delete) program from sysinternals](https://learn.microsoft.com/en-us/sysinternals/downloads/sdelete)
+
+----------------
+End of README.md
