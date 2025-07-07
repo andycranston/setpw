@@ -1,5 +1,5 @@
 #
-# @(!--#) @(#) setpw.py, version 001, 29-march-2018
+# @(!--#) @(#) setpw.py, version 002, 07-july-2025
 #
 # Windows only.
 #
